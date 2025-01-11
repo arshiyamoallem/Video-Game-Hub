@@ -7,7 +7,7 @@ Guessing the Number Game
 This function implements a simple game where the computer generates a random 
 number, and the user attempts to guess that number. The game has a hub 
 where the player has 4 options to choose from. The game provides feedback on whether 
-the user's guess is too high, too low, or correct. The game also keeps track whether the play
+the user's guess is too high, too low, or correct. The game also keeps track if the player
 provides the correct type of number as it will only accept integer numbers.
 It tracks the number of attempts and the game ends when the user guesses the correct number or
 if the user has taken up all of their attempts. The game will then ask if you would like to restart 
