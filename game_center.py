@@ -33,7 +33,7 @@ def guessing_game():
             instruction = input("Do you want to go over the instructions of the game? [y/n]: ")
 
             if instruction == 'n':
-                print("Skipping instructions and moving to the next part of the game.")
+                print("\nSkipping instructions and moving to the next part of the game.")
                 time.sleep(1)
                 redo = False
 
@@ -67,8 +67,9 @@ def guessing_game():
                 
 
         while play_guess_game:
-
-            print("We have 3 levels\n1- Level 1 is a number between 1 and 50\n2- Level 2 is a number between 1 and 100\n3- Level 3 is a number between 1 and 200\n4- Exit ")
+            print("_______________________________________")
+            print("\nWe have 3 levels\n1- Level 1 is a number between 1 and 50\n2- Level 2 is a number between 1 and 100\n3- Level 3 is a number between 1 and 200\n4- Exit \n")
+            print("_______________________________________")
             time.sleep(0.2)
             choice = int(input("Which option do you want to choose: "))
             round = True
@@ -92,6 +93,7 @@ def guessing_game():
 
                         try:
                             user_guess = int(input("Guess a number: "))
+
                             time.sleep(0.2)
                         
                         except ValueError:
@@ -102,35 +104,37 @@ def guessing_game():
                         attempts += 1
                         time.sleep(0.2)
 
-                        if user_guess < chosen_number:
+                        if 0 < user_guess < chosen_number:
                             print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
 
-                        elif user_guess > chosen_number:
+                        elif 51 > user_guess > chosen_number:
                             print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
 
-                        else:
+                        elif user_guess == chosen_number:
                             print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
                             break
+
+                        else:
+                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
+                            attempts -= 1
 
                     if attempts >= 5 and user_guess != chosen_number:
                         time.sleep(0.2)
                         print(f"Game Over! The correct number was {chosen_number}.\n")
                                         
-                    restart_level = True
+                    while True:
+                        restart_input = input("Do you want to restart? [y/n]: ").lower()
 
-                    while restart_level == True:
-                        time.sleep(0.2)
-                        restart_level_input = input("Do you want to restart? [y/n]: ")
-
-                        if restart_level_input == 'n':
-                            round = False 
-                            break
-
-                        elif restart_level_input == 'y':
+                        if restart_input in ['y','n']:
+                            time.sleep(.5)
                             break
                         else:
-                            print("\nInvalid entry! Try again\n")
-                            continue
+                            print("Invalid entry! Please enter 'y' or 'n'.\n")
+                            time.sleep(.2)
+
+                    if restart_input == 'n':
+                        round = False
+                        time.sleep(.5)
 
                 elif choice == 2:
                     time.sleep(0.2)
@@ -157,41 +161,38 @@ def guessing_game():
                         time.sleep(0.2)
                         attempts += 1
 
-                        if user_guess < chosen_number:
+                        if 0 < user_guess < chosen_number:
                             print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
-                            time.sleep(0.2)
 
-                        elif user_guess > chosen_number:
+                        elif 101 > user_guess > chosen_number:
                             print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
-                            time.sleep(0.2)
+
+                        elif user_guess == chosen_number:
+                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
+                            break
 
                         else:
-                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
-                            time.sleep(0.2)
-                            break
+                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
+                            attempts -= 1
 
                     if attempts >= 10 and user_guess != chosen_number:
                         print(f"Game Over! The correct number was {chosen_number}.\n")
                         time.sleep(0.2)
                         break
 
-                    restart_level = True
-
-                    while restart_level:
-                        time.sleep(0.2)
-                        restart_level_input = input("Do you want to restart? [y/n]: ")
-                        time.sleep(0.2)
-
-                        if restart_level_input == 'n':
-                            round = False 
-                            break
-
-                        elif restart_level_input == 'y':
+                    while True:
+                        restart_input = input("Do you want to restart? [y/n]: ").lower()
+                        
+                        if restart_input in ['y','n']:
+                            time.sleep(.5)
                             break
                         else:
-                            print("\nInvalid entry! Try again\n")
-                            time.sleep(0.2)
-                            continue
+                            print("Invalid entry! Please enter 'y' or 'n'.\n")
+                            time.sleep(.2)
+
+                    if restart_input == 'n':
+                        round = False
+                        time.sleep(.5)
 
                 elif choice == 3:
                     time.sleep(0.2)
@@ -217,40 +218,38 @@ def guessing_game():
                         
                         attempts += 1
 
-                        if user_guess < chosen_number:
+                        if 0 < user_guess < chosen_number:
                             print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
-                            time.sleep(0.2)
 
-                        elif user_guess > chosen_number:
+                        elif 201 > user_guess > chosen_number:
                             print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
-                            time.sleep(0.2)
+
+                        elif user_guess == chosen_number:
+                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
+                            break
 
                         else:
-                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
-                            time.sleep(0.2)
-                            break
+                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
+                            attempts -= 1
 
                     if attempts >= 10 and user_guess != chosen_number:
                         print(f"Game Over! The correct number was {chosen_number}.\n")
                         time.sleep(0.2)
                         break
 
-                    restart_level = True
-
-                    while restart_level:
-                        time.sleep(0.2)
-                        restart_level_input = input("Do you want to restart? [y/n]: ")
-                        time.sleep(0.2)
+                    while True:
+                        restart_input = input("Do you want to restart? [y/n]: ").lower()
                         
-                        if restart_level_input == 'n':
-                            round = False 
-                            break
-
-                        elif restart_level_input == 'y':
+                        if restart_input in ['y','n']:
+                            time.sleep(.5)
                             break
                         else:
-                            print("\nInvalid entry! Try again\n")
-                            continue
+                            print("Invalid entry! Please enter 'y' or 'n'.\n")
+                            time.sleep(.2)
+
+                    if restart_input == 'n':
+                        round = False
+                        time.sleep(.5)
 
                 elif choice == 4:
                     time.sleep(0.2)
