@@ -1,22 +1,17 @@
+#GUESS_GAME
 import time
 import random
-""" Guessing the number game
+"""
+Guessing the Number Game
 
-Instructions
-1. Import Required Libraries
-Use the random library to generate a random number.
-2. Generate the Random Number
-The computer will randomly select a number within a range (e.g., 1 to 100).
-3. User Input
-Prompt the user to guess the number.
-4. Provide Hints
-Compare the user's guess with the random number:
-If it's too low, print "Too low! Try again."
-If it's too high, print "Too high! Try again."
-5. Keep Track of Guesses
-Use a counter to track the number of attempts.
-6. End the Game
-When the user guesses correctly, print a success message with the number of attempts and exit the loop.
+This function implements a simple game where the computer generates a random 
+number, and the user attempts to guess that number. The game has a hub 
+where the player has 4 options to choose from. The game provides feedback on whether 
+the user's guess is too high, too low, or correct. The game also keeps track whether the play
+provides the correct type of number as it will only accept integer numbers.
+It tracks the number of attempts and the game ends when the user guesses the correct number or
+if the user has taken up all of their attempts. The game will then ask if you would like to restart 
+the level you were at or if you would like to return the hub. 
 """
 
 def guessing_game(): 
