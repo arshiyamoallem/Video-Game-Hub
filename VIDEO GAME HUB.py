@@ -3,8 +3,9 @@ VIDEO GAME HUB
 A cool coding project design using time and sys libraries. 
 A simple hub where you can play any sort of game
 """
-#import guess_game
-import game_center 
+import guess_game as g
+import snake_game as sg
+import rock_paper_scissors as rps
 import time
 import sys
 
@@ -26,24 +27,32 @@ def loading_animation(text: str) -> str:
 #________________________________________________________________________________________________________________________________
 while True:
 
-    print("Video game hub")
+    print("Video Game Hub")
     print("_______________________________________")
-    print("1- Guess the number\n2- Black Jack\n3- Exit")
+    print("1- Guess the Number\n2- Rock Paper Scissors Game\n3- Snake Game\n4- Exit")
     print("_______________________________________")
     choice = int(input("Your choice: "))
+    print("\n\n")
 
     if choice == 1:
-        game_center.guessing_game()
-        loading_animation("Returning back to hub")
+        g.guessing_game() # 1st game
+        loading_animation("Returning back to hub") 
         continue
     
     elif choice == 2:
-        game_center.blackjack_game()
+        rps.rock_paper_scissors() # 2nd game
         loading_animation("Returning back to hub") 
         continue
 
     elif choice == 3:
-        loading_animation("Exiting Program")
+        # 3rd game 
+        print("Currently snake game is in development")
+        loading_animation("Returning back to hub") 
+        continue
+
+    elif choice == 4:
+        #exit program
+        loading_animation("Exiting Program") 
         break
 
     else:
