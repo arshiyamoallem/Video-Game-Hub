@@ -5,6 +5,7 @@ A simple hub where you can play any sort of game
 """
 import guess_game as g
 import rock_paper_scissors as rps
+import quiz_game as qg
 import time
 import sys
 
@@ -29,7 +30,7 @@ while True:
 
     print("Video Game Hub")
     print("_______________________________________")
-    print("1- Guess the Number\n2- Rock Paper Scissors Game\n3- Snake Game\n4- Exit")
+    print("1- Guess the Number\n2- Rock Paper Scissors Game\n3- Quiz Game\n4- Exit")
     print("_______________________________________")
 
     try:
@@ -48,7 +49,7 @@ while True:
 
         elif choice == 3:
             # 3rd game 
-            print("Currently snake game is in development")
+            qg.quiz() # 3rd game
             loading_animation("Returning back to hub") 
             continue
 
