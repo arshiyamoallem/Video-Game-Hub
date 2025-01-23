@@ -94,5 +94,3 @@ def quiz():
                 sleep(0.5)
                 print("Error! Please enter either 'y' or 'n'.\n")  
      
-
-quiz()
