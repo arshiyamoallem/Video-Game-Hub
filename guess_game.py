@@ -75,7 +75,13 @@ def guessing_game():
         while play_guess_game:
             # Show game level options
             print("_______________________________________")
-            print("We have 3 levels\n1- Level 1 is a number between 1 and 50\n2- Level 2 is a number between 1 and 100\n3- Level 3 is a number between 1 and 200\n4- Exit \n")
+            print(
+                "We have 3 levels\n"
+                "1- Level 1 is a number between 1 and 50\n"
+                "2- Level 2 is a number between 1 and 100\n"
+                "3- Level 3 is a number between 1 and 200\n"
+                "4- Exit"
+            )
             print("_______________________________________")
             time.sleep(0.2)
             # User selects difficulty level
