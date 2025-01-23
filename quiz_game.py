@@ -6,7 +6,8 @@ It presents a series of questions, displays the possible answer options for each
 accepts user input, and keeps track of the user's answers.
 """
 def quiz():
-    while True:
+    play_quiz = True
+    while play_quiz:
         questions = ("How many wheels does a car have: ",
                     "How many meters are in a kilometer: ",
                     "How many centimeters are in a meter: ",
@@ -33,19 +34,25 @@ def quiz():
                 sleep(.2)
                 print(option)
             
-            guess = input("Enter (A, B, C, D): ").upper()
-            guesses.append(guess)
+            while True:
+                guess = input("Enter (A, B, C, D): ").strip().upper()
+                if guess not in ('A', 'B', 'C', 'D'):
+                    print("\nPlease enter a valid option (A, B, C, D).\n")
+                else:
+                    break  # Valid input, exit the loop
+
             sleep(.5)
-            
+
             if guess == answers[question_num]:
-                score += 1
-                print("\nCORRECT!")
-            
+                    score += 1
+                    print("\nCORRECT!")
+
             else:
                 print("\nINCORRECT!\n")
                 sleep(.5)
                 print(f"{answers[question_num]} is the correct answer!")
 
+            sleep(0.5)
             question_num += 1
 
         print("_______________________")
@@ -69,19 +76,23 @@ def quiz():
         print(f"Your score is {score}%.")
         print("_______________________\n")
     
-        try:
-
-            restart_quiz = input("Would you like to try again? [y/n]: ")
+        while True: 
+            sleep(0.5)
+            restart_quiz = input("Would you like to try again? [y/n]: ").strip().lower()
             print("\n")
 
-        except ValueError:
+            if restart_quiz == 'n':
+                sleep(0.5)
+                play_quiz = False
+                break
 
-            print("Invalid input!\n Try again.\n")
-        
-        if restart_quiz == 'n':
-            sleep(.5)
-            break
-        else:
-            continue
+            elif restart_quiz == 'y':
+                sleep(0.5)
+                break
 
-        
+            else:
+                sleep(0.5)
+                print("Error! Please enter either 'y' or 'n'.\n")  
+     
+
+quiz()
