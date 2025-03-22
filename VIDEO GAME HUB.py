@@ -6,8 +6,7 @@ A simple hub where you can play any sort of game
 import guess_game as g
 import rock_paper_scissors as rps
 import quiz_game as qg
-import time
-import sys
+import time, sys
 
 #________________________________________________________________________________________________________________________________
 def loading_animation(text: str) -> str:
@@ -58,8 +57,12 @@ while True:
             loading_animation("Exiting Program") 
             break  
         
-    except ValueError:
+        else:
+            #For invalid entries in the program
+            print("\nInvalid entry! \n")
+            continue
 
-        #For invalid entries in the program
-        print("\nInvalid entry! \n")
-        continue
+    except ValueError:
+        #For invalid values in the program
+        time.sleep(0.3)
+        print("Unknown Entry. Try again")
