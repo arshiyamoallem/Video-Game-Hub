@@ -1,296 +1,114 @@
-#GUESS_GAME
-import time
-import random
-"""
-Guessing the Number Game
+import time, random
 
-This function implements a simple game where the computer generates a random 
-number, and the user attempts to guess that number. The game has a hub 
-where the player has 4 options to choose from. The game provides feedback on whether 
-the user's guess is too high, too low, or correct. The game also keeps track if the player
-provides the correct type of number as it will only accept integer numbers.
-It tracks the number of attempts and the game ends when the user guesses the correct number or
-if the user has taken up all of their attempts. The game will then ask if you would like to restart 
-the level you were at or if you would like to return the hub. 
-"""
-def guessing_game(): 
-    # Set the game flag to True to start the game
-    guess_game = True
+def show_instructions():
+    """Displays game instructions."""
+    print("Here are the instructions to the game.")
+    time.sleep(0.2)
+    print("We are only working with integer numbers, no fractions.")
+    print("The computer will select a random number based on your chosen level.")
+    print("You must guess the number, and hints will be provided if your guess is too high or too low.")
+    print("The game tracks your number of attempts and ensures you don't repeat guesses.")
+    print("Once you guess correctly, the game is over.")
+    while True:
+        escape_instruction = input("Press Enter to continue...")
+        if escape_instruction != "".strip():
+            print("Error! Please press enter to continue")
+        else:
+            break
 
-    while guess_game:
-        # Welcome message
-        print("Welcome to the Guessing Game")
-        time.sleep(1)
-        
-        # Flag to control whether to show instructions
-        play_guess_game = True
-        redo = True
-        instructions_shown = False  # To track if instructions have already been shown
 
-        while redo:
-            if not instructions_shown:  # Only prompt for instructions if not already shown
-                instruction = input("Do you want to go over the instructions of the game? [y/n]: ").strip().lower()
-
-                # Skip instructions if the user chooses 'n'
-                if instruction == 'n':
-                    print("\nSkipping instructions and moving to the next part of the game.\n")
-                    time.sleep(1)
-                    redo = False  # Exit the loop
-                    break
-
-                # Show instructions if the user chooses 'y'
-                elif instruction == 'y':
-                    instructions_shown = True  # Mark instructions as shown
-                    print("\nHere are the instructions to the game:\n")
-                    time.sleep(0.2)
-                    print("1. We are only working with integer numbers, no fractions.")
-                    time.sleep(0.2)
-                    print("2. The computer will select a random number between 1 and 100. You must guess the number.")
-                    time.sleep(0.2)
-                    print("3. The computer will give hints if your guess is too high or too low.")
-                    time.sleep(0.2)
-                    print("4. The game keeps track of your guesses and ensures you don't repeat numbers.")
-                    time.sleep(0.2)
-                    print("5. Once you guess the correct number, the game is over.")
-                    time.sleep(0.2)
-
-                    while True:  # Prompt until valid input
-                        escape_instruction = input("To go to the next section, enter 'yes': ").strip().lower()
-                        if escape_instruction == 'yes':
-                            print("\nProceeding to the next part of the game\n")
-                            redo = False  # Exit the loop
-                            break
-                        else:
-                            print("\nInvalid entry! Please type 'yes' to proceed.\n")
-
-                else:
-                    # Handle invalid input for instructions
-                    print("\nInvalid entry! Please type 'y' for yes or 'n' for no.\n")
+def get_user_choice():
+    """Displays the level selection menu and returns the chosen level."""
+    print("\nWe have 3 levels:")
+    print("1 - Level 1 (1 to 50, 5 attempts)")
+    print("2 - Level 2 (1 to 100, 10 attempts)")
+    print("3 - Level 3 (1 to 200, 10 attempts)")
+    print("4 - Exit")
+    
+    while True:
+        try:
+            choice = int(input("Choose a level: "))
+            if 1 <= choice <= 4:
+                return choice
             else:
-                # If instructions are already shown, proceed
-                print("\nProceeding to the next part of the game...\n")
-                redo = False
+                print("Invalid choice. Please enter a number between 1 and 4.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
-
-        while play_guess_game:
-            # Show game level options
-            print("_______________________________________")
-            print(
-                "We have 3 levels\n"
-                "1- Level 1 is a number between 1 and 50\n"
-                "2- Level 2 is a number between 1 and 100\n"
-                "3- Level 3 is a number between 1 and 200\n"
-                "4- Exit"
-            )
-            print("_______________________________________")
-            time.sleep(0.2)
-            # User selects difficulty level
-            try:
-                choice = int(input("Which option do you want to choose: ").strip())
-                print("\n")
-                round = True
-                time.sleep(0.2)
-
-            except ValueError:
-                time.sleep(0.5)
-                print("\nInvalid entry")
-                print("Enter a valid number\n")
+def play_level(level, max_number, max_attempts):
+    """Handles gameplay for a given level."""
+    print(f"\nLet's Begin! I have selected a number between 1 and {max_number}.")
+    print(f"You have {max_attempts} attempts to guess it.")
+    
+    chosen_number = random.randint(1, max_number)
+    attempts = 0
+    guessed_numbers = set()
+    
+    while attempts < max_attempts:
+        try:
+            user_guess = int(input("Guess a number: "))
+            if user_guess in guessed_numbers:
+                print("You already guessed that number! Try a different one.")
                 continue
+            
+            if 1 <= user_guess <= max_number:
+                guessed_numbers.add(user_guess)
+                attempts += 1
+            else:
+                print(f"Number must be between 1 and {max_number}. Try again.")
+                continue
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            continue
 
-            while round:
-                # Level 1 game (1 to 50)
-                if choice == 1:
-                    print("Let's Begin\n")
-                    time.sleep(0.2)
-                    print("I have selected a number between 1 and 50.")
-                    time.sleep(0.2)
-                    print("You have 5 attempts to guess the number. Can you guess what it is?")
-                    time.sleep(0.2)
+        if user_guess < chosen_number:
+            print(f"Too low! Attempts left: {max_attempts - attempts}")
+        elif user_guess > chosen_number:
+            print(f"Too high! Attempts left: {max_attempts - attempts}")
+        else:
+            print(f"Congrats! You guessed the number {chosen_number} in {attempts} attempts!")
+            return True
+    
+    print(f"Game Over! The correct number was {chosen_number}.")
+    return False
 
-                    # Randomly choose number between 1 and 50
-                    chosen_number = random.randint(1,50)
-                    attempts = 0
+def guessing_game():
+    """Main function to run the Guessing Game."""
+    print("Welcome to the Guessing Game!")
+    time.sleep(1)
+    while True:
+        view_instruct = input("Do you want to view the instructions? [y/n]: ").strip().lower()
+        if view_instruct in ['y', 'yes']:
+            show_instructions()
+            break
+        elif view_instruct in ['n', 'no']:
+            break
+        else:
+            print("Error! Please enter 'y' for yes or 'n' for no.")
 
-                    while attempts < 5:
-                        try:
-                            # User guesses a number
-                            user_guess = int(input("Guess a number: ").strip())
-                            time.sleep(0.2)
-                        
-                        except ValueError:
-                            # Handle invalid input
-                            print("Invalid entry")
-                            print("Enter a valid number\n")
-                            continue
-                        
-                        attempts += 1
-                        time.sleep(0.2)
-
-                        # Compare guess with the chosen number
-                        if 0 < user_guess < chosen_number:
-                            print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
-
-                        elif 51 > user_guess > chosen_number:
-                            print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
-
-                        elif user_guess == chosen_number:
-                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
-                            break
-
-                        else:
-                            # Handle out-of-range guess
-                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
-                            attempts -= 1
-
-                    # End game if attempts run out
-                    if attempts >= 5 and user_guess != chosen_number:
-                        time.sleep(0.2)
-                        print(f"Game Over! The correct number was {chosen_number}.\n")
-                                        
-                    # Ask user if they want to restart
-                    while True:
-                        restart_input = input("Do you want to restart? [y/n]: ").strip().lower()
-
-                        if restart_input in ['y','n']:
-                            time.sleep(.5)
-                            break
-                        else:
-                            print("Invalid entry! Please enter 'y' or 'n'.\n")
-                            time.sleep(.2)
-
-                    if restart_input == 'n':
-                        round = False
-                        time.sleep(.5)
-
-                # Level 2 game (1 to 100)
-                elif choice == 2:
-                    time.sleep(0.2)
-                    print("Let's Begin\n")
-                    time.sleep(0.2)
-                    print("I have selected a number between 1 and 100.")
-                    time.sleep(0.2)
-                    print("You have 10 attempts to guess the number. Can you guess what it is?")
-                    time.sleep(0.2)
-
-                    # Randomly choose number between 1 and 100
-                    chosen_number = random.randint(1,100)
-                    attempts = 0
-
-                    while attempts < 10:
-                        try:
-                            user_guess = int(input("Guess a number: ").strip())
-                        
-                        except ValueError:
-                            print("Invalid entry")
-                            print("Enter a valid number\n")
-                            continue
-
-                        time.sleep(0.2)
-                        attempts += 1
-
-                        if 0 < user_guess < chosen_number:
-                            print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
-
-                        elif 101 > user_guess > chosen_number:
-                            print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
-
-                        elif user_guess == chosen_number:
-                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
-                            break
-
-                        else:
-                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
-                            attempts -= 1
-
-                    # End game if attempts run out
-                    if attempts >= 10 and user_guess != chosen_number:
-                        print(f"Game Over! The correct number was {chosen_number}.\n")
-                        time.sleep(0.2)
-                        break
-
-                    # Ask for restart input
-                    while True:
-                        restart_input = input("Do you want to restart? [y/n]: ").strip().lower()
-                        
-                        if restart_input in ['y','n']:
-                            time.sleep(.5)
-                            break
-                        else:
-                            print("Invalid entry! Please enter 'y' or 'n'.\n")
-                            time.sleep(.2)
-
-                    if restart_input == 'n':
-                        round = False
-                        time.sleep(.5)
-
-                # Level 3 game (1 to 200)
-                elif choice == 3:
-                    time.sleep(0.2)
-                    print("Let's Begin\n")
-                    time.sleep(0.2)
-                    print("I have selected a number between 1 and 200.")
-                    time.sleep(0.2)
-                    print("You have 10 attempts to guess the number. Can you guess what it is?")
-                    time.sleep(0.2)
-
-                    # Randomly choose number between 1 and 200
-                    chosen_number = random.randint(1,200)
-                    attempts = 0
-
-                    while attempts < 10:
-                        time.sleep(0.2)
-                        try:
-                            user_guess = int(input("Guess a number: ").strip())
-                        
-                        except ValueError:
-                            print("Invalid entry")
-                            print("Enter a valid number\n")
-                            continue
-                        
-                        attempts += 1
-
-                        if 0 < user_guess < chosen_number:
-                            print(f"\nToo low! Try again.\tAttempts: {attempts}\n")
-
-                        elif 201 > user_guess > chosen_number:
-                            print(f"\nToo High! Try again.\tAttempts: {attempts}\n")
-
-                        elif user_guess == chosen_number:
-                            print(f"Congrats! You guess the number {chosen_number} in {attempts} attempts.\n")
-                            break
-
-                        else:
-                            print("\nError! Number must be in a range of 1-200.\nThis attempt will not count. Try again.\n")
-                            attempts -= 1
-
-                    # End game if attempts run out
-                    if attempts >= 10 and user_guess != chosen_number:
-                        print(f"Game Over! The correct number was {chosen_number}.\n")
-                        time.sleep(0.2)
-                        break
-
-                    # Restart option for level 3
-                    while True:
-                        restart_input = input("Do you want to restart? [y/n]: ").strip().lower()
-                        
-                        if restart_input in ['y','n']:
-                            time.sleep(.5)
-                            break
-                        else:
-                            print("Invalid entry! Please enter 'y' or 'n'.\n")
-                            time.sleep(.2)
-
-                    if restart_input == 'n':
-                        round = False
-                        time.sleep(.5)
-
-                # Exit option
-                elif choice == 4:
-                    time.sleep(0.2)
-                    return
-                
-                else:
-                    time.sleep(0.2)
-                    print("\nInvalid entry! Try again\n")
-                    time.sleep(0.2)
+    while True:
+        choice = get_user_choice()
+        if choice == 4:
+            print("Thanks for playing! Goodbye.")
+            break
+        
+        level_settings = {
+            1: (50, 5),
+            2: (100, 10),
+            3: (200, 10)
+        }
+        max_number, max_attempts = level_settings[choice]
+        
+        while True:
+            won = play_level(choice, max_number, max_attempts)
+            while True:
+                play_again = input("Do you want to play another round? [y/n]: ").strip().lower()
+                if play_again in ['y', 'yes']:
                     break
+                elif play_again in ['n', 'no']:
+                    print("Returning to main menu...")
+                    break
+                else:
+                    print("Error! Please enter 'y' for yes or 'n' for no.")
+            if play_again in ['n', 'no']:
+                break
