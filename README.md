@@ -22,14 +22,14 @@ Each game runs in the terminal and includes instructions, input validation, and 
 ---
 
 ## Project Structure
-
+```
 📂 video-game-hub/
-- ├── main.py # Game hub that connects all games
-- ├── rock_paper_scissors.py # Rock Paper Scissors logic
-- ├── numb_guess.py # Number guessing game logic
-- ├── quiz.py # Multiple-choice quiz logic
-- └── README.md # Project documentation
----
+├── main.py # Game hub that connects all games
+├── rock_paper_scissors.py # Rock Paper Scissors logic
+├── numb_guess.py # Number guessing game logic
+├── quiz.py # Multiple-choice quiz logic
+└── README.md # Project documentation
+```
 
 ## How to Run
 
