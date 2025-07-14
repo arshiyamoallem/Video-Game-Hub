@@ -12,10 +12,10 @@ Each game runs in the terminal and includes instructions, input validation, and 
 
 ## Features
 
-- 🕹Game selection menu via terminal
+- Game selection menu via terminal
 - Step-by-step instructions for each game
 - Replay options and return-to-hub feature
-- 🛡Strong input validation
+- Strong input validation
 - Loading animations for better UX
 - Modular, beginner-friendly code
 
