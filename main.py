@@ -47,7 +47,6 @@ while True:
             continue
 
         elif choice == 3:
-            # 3rd game 
             qg.quiz() # 3rd game
             loading_animation("Returning back to hub") 
             continue
@@ -66,3 +65,4 @@ while True:
         #For invalid values in the program
         time.sleep(0.3)
         print("Unknown Entry. Try again")
+
