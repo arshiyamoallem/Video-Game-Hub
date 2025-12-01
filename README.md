@@ -47,7 +47,7 @@ Video Game Hub
 _______________________________________
 1- Guess the Number
 2- Rock Paper Scissors Game
-3- Snake Game
+3- Quiz Game
 4- Exit
 _______________________________________
 Your choice: 
