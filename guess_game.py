@@ -72,7 +72,7 @@ def play_level(level, max_number, max_attempts):
     print(f"Game Over! The correct number was {chosen_number}.")
     return False
 
-def guessing_game():
+def play():
     """Main function to run the Guessing Game."""
     print("Welcome to the Guessing Game!")
     time.sleep(1)

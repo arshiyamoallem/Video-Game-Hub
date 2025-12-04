@@ -5,7 +5,7 @@ The function "quiz()" implements a simple text-based multiple-choice quiz.
 It presents a series of questions, displays the possible answer options for each, 
 accepts user input, and keeps track of the user's answers.
 """
-def quiz():
+def play():
     play_quiz = True
     while play_quiz:
         questions = ("How many wheels does a car have: ",
