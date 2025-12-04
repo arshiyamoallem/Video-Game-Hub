@@ -6,7 +6,7 @@ Simple rock paper scissors game implemented using a hub along
 with an input from a user to decide if he wishes to play a game or not.
 """
 
-def rock_paper_scissors():
+def play():
     play_game = True  # Controls the main game loop
     
     # Welcome message
