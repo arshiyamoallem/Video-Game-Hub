@@ -1,5 +1,5 @@
-from .guess_game import play as guess_game_play
-from .rock_paper_scissors import play as rps_play
-from .quiz_game import play as quiz_play
+from .guess_game import GuessNumberGame
+from .rock_paper_scissors import RockPaperScissors
+from .quiz_game import QuizGame
 
-__all__ = ["guess_game_play", "rps_play", "quiz_play"]
+__all__ = ["GuessNumberGame", "RockPaperScissors", "QuizGame"]
