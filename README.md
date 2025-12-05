@@ -115,5 +115,5 @@ Implement multiplayer options
 ## License
 This project is open-source and available for educational purposes.
 
-Author
+## Author
 Created as a Python learning project to demonstrate modular programming, game development, and user interface design in the terminal.
