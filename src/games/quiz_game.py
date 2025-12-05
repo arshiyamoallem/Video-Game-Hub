@@ -77,7 +77,7 @@ class QuizGame:
         sleep(1)
 
         while True:
-            view = input("Would you like to view the instructions? [y/n]: ").strip().lower()
+            view = input("View instructions? [y/n]: ").strip().lower()
             print("\n")
             if view in ('y', 'yes'):
                 self.show_instructions()
