@@ -1,15 +1,14 @@
 import time, sys
-from games import guess_game_play, rps_play, quiz_play
-
+from games import GuessNumberGame, RockPaperScissors, QuizGame
 
 class GameHub:
     def __init__(self):
         self.games = {
-            1: guess_game_play,
-            2: rps_play,
-            3: quiz_play,
+            1: GuessNumberGame,
+            2: RockPaperScissors,
+            3: QuizGame,
         }
-    def loading_animation(self, text: str) -> str:
+    def loading_animation(self, text: str) -> None:
         for _ in range(3):
             for dot_count in range(1, 4):  
                 sys.stdout.write(f"\r{text}{'.' * dot_count}")  # Overwrite the line with dots
@@ -19,10 +18,11 @@ class GameHub:
                 sys.stdout.flush()  
         sys.stdout.write("\r" + " " * len(text))  
         sys.stdout.flush() 
-        print("\n") 
-
-    def display_menu(self):
-
+        print() 
+    
+    
+    def display_menu(self) -> None:
+        """Print the main hub menu."""
         print("\nVideo Game Hub")
         print("_______________________________________")
         print("1- Guess the Number")
@@ -31,7 +31,7 @@ class GameHub:
         print("4- Exit")     
         print("_______________________________________")
 
-    def run(self):
+    def run(self) -> None: 
         while True:
             self.display_menu()
             try:
@@ -39,9 +39,8 @@ class GameHub:
                 print("\n")
 
                 if choice in self.games:
-                    #self.games[choice].play() # Call the play function of the selected game using OOP
-                    # will use this until I edit other files to be implemented with OOP
-                    self.games[choice]()
+                    game = self.games[choice]()
+                    game.play()
                     self.loading_animation("Returning back to hub") 
 
                 elif choice == 4:
@@ -50,7 +49,7 @@ class GameHub:
                     break  
                 
                 else:
-                    print("\nInvalid entry! \n")
+                    print("Invalid menu option! Choose 1-4.\n")
 
             except ValueError:
                 print("Unknown Entry. Try again")
