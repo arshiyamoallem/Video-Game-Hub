@@ -61,7 +61,8 @@ python main.py
 ```
 
 ## Game Instructions
-1. Guess the Number
+
+1. **Guess the Number**
 - Choose from 3 difficulty levels
 
 - Guess the computer's random number
@@ -70,7 +71,7 @@ python main.py
 
 - Limited attempts per level
 
-2. Rock Paper Scissors
+2. **Rock Paper Scissors**
 - Classic hand game against AI
 
 - Choose rock, paper, or scissors
@@ -79,7 +80,7 @@ python main.py
 
 - Play unlimited rounds
 
-3. Quiz Game
+3. **Quiz Game**
 - Answer multiple-choice questions
 
 - Test your general knowledge
