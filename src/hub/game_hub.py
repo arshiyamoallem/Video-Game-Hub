@@ -1,14 +1,12 @@
 import time, sys
-from games import GuessNumberGame
-from games import RockPaperScissors
-from games import QuizGame
+from games import GuessNumberGame, RockPaperScissors, QuizGame
 
 class GameHub:
     def __init__(self):
         self.games = {
-            1: GuessNumberGame(),
-            2: RockPaperScissors(),
-            3: QuizGame(),
+            1: GuessNumberGame,
+            2: RockPaperScissors,
+            3: QuizGame,
         }
     def loading_animation(self, text: str) -> None:
         for _ in range(3):
@@ -41,7 +39,8 @@ class GameHub:
                 print("\n")
 
                 if choice in self.games:
-                    self.games[choice]().play()
+                    game = self.games[choice]()
+                    game.play()
                     self.loading_animation("Returning back to hub") 
 
                 elif choice == 4:
