@@ -26,7 +26,7 @@ class GameHub:
         print("\nVideo Game Hub")
         print("_______________________________________")
         print("1- Guess the Number")
-        print("2- Rock Paper Scissors Game") 
+        print("2- Rock Paper Scissors") 
         print("3- Quiz Game") 
         print("4- Exit")     
         print("_______________________________________")

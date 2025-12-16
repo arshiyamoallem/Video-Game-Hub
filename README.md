@@ -46,7 +46,7 @@ python main.py
 Video Game Hub
 _______________________________________
 1- Guess the Number
-2- Rock Paper Scissors Game
+2- Rock Paper Scissors
 3- Quiz Game
 4- Exit
 _______________________________________
