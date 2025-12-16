@@ -60,6 +60,17 @@ cd src
 python main.py
 ```
 
+## Sample:
+```
+Video Game Hub
+_______________________________________
+1- Guess the Number
+2- Rock Paper Scissors
+3- Quiz Game
+4- Exit
+_______________________________________
+Your choice: 
+```
 ## Game Instructions
 1. Guess the Number
 - Choose from 3 difficulty levels
