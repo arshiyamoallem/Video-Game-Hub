@@ -73,7 +73,7 @@ Your choice:
 ```
 ## Game Instructions
 
-1. **Guess the Number**
+#### **Guess the Number**
 - Choose from 3 difficulty levels
 
 - Guess the computer's random number
@@ -82,7 +82,7 @@ Your choice:
 
 - Limited attempts per level
 
-2. **Rock Paper Scissors**
+#### **Rock Paper Scissors**
 - Classic hand game against AI
 
 - Choose rock, paper, or scissors
@@ -91,7 +91,7 @@ Your choice:
 
 - Play unlimited rounds
 
-3. **Quiz Game**
+#### **Quiz Game**
 - Answer multiple-choice questions
 
 - Test your general knowledge
