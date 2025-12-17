@@ -3,12 +3,16 @@ import sys
 import os
 import unittest
 
-# Add src to Python path
-src_dir = os.path.join(os.path.dirname(__file__), 'src')
-sys.path.insert(0, src_dir)
-
 def run_all_tests():
     """Run all tests in the test directory"""
+    print("=" * 60)
+    print("RUNNING ALL TESTS")
+    print("=" * 60)
+    
+    # Add src to Python path
+    src_dir = os.path.join(os.path.dirname(__file__), 'src')
+    sys.path.insert(0, src_dir)
+    
     # Discover tests
     loader = unittest.TestLoader()
     start_dir = os.path.join(os.path.dirname(__file__), 'test')
@@ -16,10 +20,6 @@ def run_all_tests():
     
     # Run tests
     runner = unittest.TextTestRunner(verbosity=2)
-    print("=" * 60)
-    print("RUNNING ALL TESTS")
-    print("=" * 60)
-    
     result = runner.run(suite)
     
     # Exit with appropriate code
@@ -27,5 +27,3 @@ def run_all_tests():
 
 if __name__ == '__main__':
     sys.exit(run_all_tests())
-
-

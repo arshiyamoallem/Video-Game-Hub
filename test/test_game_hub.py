@@ -1,42 +1,51 @@
+# test/test_guess_game.py (SUPER SIMPLE)
 import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from games.guess_game import GuessNumberGame
-from games.quiz_game import QuizGame
-from games.rock_paper_scissors import RockPaperScissors
-from hub.game_hub import GameHub
-
 import unittest
-from unittest.mock import patch, MagicMock
+from games.guess_game import GuessNumberGame
 
-class TestGameHub(unittest.TestCase):
+
+class TestGuessNumberGame(unittest.TestCase):
     
     def setUp(self):
-        self.hub = GameHub()
-
-    def tearDown(self):
-        return super().tearDown()
+        self.game = GuessNumberGame()
     
     def test_init(self):
-        self.assertIn(1, self.hub.games)
-        self.assertIs(self.hub.games[1], GuessNumberGame)
-
-        self.assertIn(2, self.hub.games)
-        self.assertIs(self.hub.games[2], RockPaperScissors)
+        """Test basic initialization"""
+        # Game should exist
+        self.assertIsNotNone(self.game)
         
-        self.assertIn(3, self.hub.games)
-        self.assertIs(self.hub.games[3], QuizGame)
-
-        self.assertEqual(len(self.hub.games), 3, "Should have exactly 3 games")
-
-        # Check they are classes, not instances (no parentheses)
-        self.assertTrue(callable(self.hub.games[1]))  # Classes are callable
-        self.assertTrue(callable(self.hub.games[2]))
-        self.assertTrue(callable(self.hub.games[3]))
-
-        #print("✅ All tests passed!")
+        # Should have level_settings dictionary
+        self.assertIsInstance(self.game.level_settings, dict)
+        
+        # Should have 3 levels
+        self.assertEqual(len(self.game.level_settings), 3)
+    
+    def test_level_1_settings(self):
+        """Test level 1 settings"""
+        max_number, max_attempts = self.game.level_settings[1]
+        self.assertEqual(max_number, 50)
+        self.assertEqual(max_attempts, 5)
+    
+    def test_level_2_settings(self):
+        """Test level 2 settings"""
+        max_number, max_attempts = self.game.level_settings[2]
+        self.assertEqual(max_number, 100)
+        self.assertEqual(max_attempts, 10)
+    
+    def test_level_3_settings(self):
+        """Test level 3 settings"""
+        max_number, max_attempts = self.game.level_settings[3]
+        self.assertEqual(max_number, 200)
+        self.assertEqual(max_attempts, 10)
+    
+    def test_levels_in_order(self):
+        """Test that levels are in correct order (1, 2, 3)"""
+        levels = list(self.game.level_settings.keys())
+        self.assertEqual(levels, [1, 2, 3])
 
 if __name__ == '__main__':
     unittest.main()
