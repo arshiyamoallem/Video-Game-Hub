@@ -4,7 +4,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 import unittest
 from games.quiz_game import QuizGame
-from unittest.mock import patch, MagicMock
 
 class TestQuizGame(unittest.TestCase):
     
