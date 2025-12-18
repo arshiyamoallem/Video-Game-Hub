@@ -1,5 +1,5 @@
 import time, sys
-from games import GuessNumberGame, RockPaperScissors, QuizGame
+from games import GuessNumberGame, RockPaperScissors, QuizGame, WordleGame
 
 class GameHub:
     def __init__(self):
@@ -7,6 +7,7 @@ class GameHub:
             1: GuessNumberGame,
             2: RockPaperScissors,
             3: QuizGame,
+            4: WordleGame,
         }
     def loading_animation(self, text: str) -> None:
         for _ in range(3):
@@ -27,8 +28,9 @@ class GameHub:
         print("_______________________________________")
         print("1- Guess the Number")
         print("2- Rock Paper Scissors") 
-        print("3- Quiz Game") 
-        print("4- Exit")     
+        print("3- Quiz Game")
+        print("4- Wordle")  
+        print("5- Exit")     
         print("_______________________________________")
 
     def run(self) -> None: 
@@ -43,7 +45,7 @@ class GameHub:
                     game.play()
                     self.loading_animation("Returning back to hub") 
 
-                elif choice == 4:
+                elif choice == 5:
                     self.loading_animation("Exiting Program") 
                     print("Thank you for playing! Goodbye!\n")
                     break  
