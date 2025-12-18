@@ -2,6 +2,7 @@
 import sys
 import os
 import unittest
+from time import sleep
 
 def run_all_tests():
     """Run all tests in the test directory"""
@@ -19,6 +20,7 @@ def run_all_tests():
     suite = loader.discover(start_dir, pattern='test_*.py')
     
     # Run tests
+    sleep(2)
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
     
