@@ -1,6 +1,6 @@
 # Video Game Hub
 
-A simple, interactive **text-based game hub** built in Python. This project offers a central interface to play three classic games:
+A simple, interactive **text-based game hub** built in Python. This project offers a central interface to play four classic games:
 
 - **Guess the Number** - Try to guess a random number within limited attempts
 - **Rock Paper Scissors** - Classic hand game against the computer
@@ -20,6 +20,7 @@ Each game runs in the terminal and includes instructions, input validation, and 
 - **Loading Animations** - Visual feedback during transitions
 - **Replay Options** - Play again or return to hub
 - **Modular Design** - Clean, organized, and maintainable code
+- **Colorful Wordle Display** - Terminal colors for visual feedback
 
 ---
 
