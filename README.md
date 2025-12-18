@@ -6,6 +6,7 @@ A simple, interactive **text-based game hub** built in Python. This project offe
 - **Rock Paper Scissors** - Classic hand game against the computer
 - **Multiple Choice Quiz** - Test your knowledge with trivia questions
 - **Wordle** - Popular word guessing game with color-coded feedback
+
 Each game runs in the terminal and includes instructions, input validation, and playful animations for a smooth experience.
 
 ---
