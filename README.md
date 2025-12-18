@@ -5,7 +5,7 @@ A simple, interactive **text-based game hub** built in Python. This project offe
 - **Guess the Number** - Try to guess a random number within limited attempts
 - **Rock Paper Scissors** - Classic hand game against the computer
 - **Multiple Choice Quiz** - Test your knowledge with trivia questions
-
+- **Wordle** - Popular word guessing game with color-coded feedback
 Each game runs in the terminal and includes instructions, input validation, and playful animations for a smooth experience.
 
 ---
@@ -37,9 +37,20 @@ Each game runs in the terminal and includes instructions, input validation, and 
 │ ├── init.py # Game class exports
 │ ├── guess_game.py # Number guessing game
 │ ├── rock_paper_scissors.py # Rock Paper Scissors
-│ └── quiz_game.py # Multiple-choice quiz
+│ ├── quiz_game.py # Multiple-choice quiz
+│ └── wordle_game.py # Wordle word guessing game
+│
+├── 📂 test/ # Test files
+│ ├── init.py 
+│ ├── test_guess_game.py
+│ ├── test_rock_paper_scissors.py
+│ ├── test_quiz_game.py
+│ └── test_wordle.py
 │
 └── README.md # Project documentation
+└── run_test.py
+└── LICENSE
+└── .gitignore
 ```
 
 ## Installation & Setup
@@ -67,9 +78,10 @@ _______________________________________
 1- Guess the Number
 2- Rock Paper Scissors
 3- Quiz Game
-4- Exit
+4- Wordle
+5- Exit
 _______________________________________
-Your choice: 
+Your choice:
 ```
 ## Game Instructions
 
@@ -100,6 +112,21 @@ Your choice:
 
 - Try to improve your grade
 
+#### **Wordle**
+- Guess a 5-letter word in 6 attempts
+
+- Color-coded feedback for each guess:
+
+  - 🟩 Green: Correct letter, correct position
+
+  - 🟨 Yellow: Correct letter, wrong position
+
+  - ⬜ White: Letter not in the word
+
+- Visual board display with colored letters
+
+- Play multiple rounds with the same word list
+
 ## Technologies Used
 - Python 3 - Core programming language
 
@@ -108,6 +135,10 @@ Your choice:
 - Object-Oriented Design - Classes for each game
 
 - Modular Architecture - Separated game logic
+
+- ANSI Color Codes - Terminal color formatting for Wordle
+
+- Unit Testing - Test cases for each game
 
 ## Future Enhancements
 Potential improvements for the project:
